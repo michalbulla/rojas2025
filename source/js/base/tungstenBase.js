@@ -7,7 +7,7 @@ var documentReady = (callback) => {
 // ----- Mobile Navigation toggle functionality
 
 const mainNavToggleButton = document.getElementById('main-nav-toggle');
-const mainNav = document.getElementById('main-nav');
+const mainNav = document.getElementById('main-nav-mobile');
 
 mainNavToggleButton.addEventListener('click', (e) => {
   if (mainNavToggleButton.getAttribute('aria-expanded') == 'true') {

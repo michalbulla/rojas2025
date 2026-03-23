@@ -1,18 +1,15 @@
-<header>
-  <div class="bg-gray-300">
+<header class="lg:bg-header bg-no-repeat bg-center z-20 relative">
+  <div class="">
     <div class="xl:container">
-      <div class="flex items-center justify-between p-2 md:p-4">
-        <div class="logo"><a href="/" title="Back to Home Page"><img class="w-[130px] md:w-[200px]" src="/img/logo.svg" alt="{{ siteName }}" /></a></div>
-        {# {% include '_partials/nav/top' %} #}
-        <button type="button" aria-label="Main Navigation Toggle" title="Main Navigation Toggle" aria-haspopup="true" aria-controls="main-nav" aria-expanded="false" class="main-nav-toggle md:hidden" id="main-nav-toggle">
-          {{ svg("@webroot/img/icons/bars-solid.svg")|attr({class: 'h-6 w-6 inline-block'}) }}
+      <div class="flex items-center justify-between p-2 lg:p-4">
+        {% include '_partials/nav/main' with {'side': 'left'} %}
+        <div class="logo ml-2"><a href="/" title="Back to Home Page"><img class="w-[130px] lg:w-[228px]" src="/img/logo_02.png" alt="{{ siteName }}" /></a></div>
+        {% include '_partials/nav/main' with {'side': 'right'} %}
+        <button type="button" aria-label="Main Navigation Toggle" title="Main Navigation Toggle" aria-haspopup="true" aria-controls="main-nav" aria-expanded="false" class="main-nav-toggle lg:hidden text-white mr-4" id="main-nav-toggle">
+          {{ svg("@webroot/img/icons/bars-solid.svg")|attr({class: 'h-8 w-8 inline-block'}) }}
         </button>
       </div>
-    </div>
-  </div>
-  <div class="bg-gray-600">
-    <div class="xl:container">
-      {% include '_partials/nav/main' %}
+      {% include '_partials/nav/mainMobile' %}
     </div>
   </div>
 </header>

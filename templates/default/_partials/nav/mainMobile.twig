@@ -1,20 +1,14 @@
 {% cache globally %}
 
-  {% if side == 'left' %}
-    {% set nav = siteOptions.mainNavigation|slice(0,4) %}
-  {% elseif side == 'right' %}
-    {% set nav = siteOptions.mainNavigation|slice(4,8) %}
-  {% else %}
-    {% set nav = siteOptions.mainNavigation %}
-  {% endif %}
-
+  {% set nav = siteOptions.mainNavigation %}
+ 
   {% apply spaceless %}
-    <nav class="absolute left-0 top-[87px] z-10 hidden w-full bg-brand-one lg:bg-transparent lg:w-auto lg:static lg:block lg:-mt-16" id="main-nav" role="menu" tabindex="-1">
+    <nav class="absolute left-0 top-[87px] z-10 hidden w-full bg-brand-one lg:hidden" id="main-nav-mobile" role="menu" tabindex="-1">
       <ul class="list-none">
         {% for entry in nav %}
           <li class="lg:relative lg:inline-block group">
             <div class="flex justify-between items-center px-2 lg:px-0">
-              <a class="flex-grow block lg:mx-2 lg-xl:mx-4 py-3 lg:py-2 font-navigation uppercase text-white transition-colors duration-300 ease-linear lg:border-b-2 lg:border-transparent lg:hover:border-brand-two lg:focus:border-brand-two lg:inline-block lg:text-[23px] lg-xl:text-2xl" role="menuitem" href="{{ entry.url }}">
+              <a class="flex-grow block lg:mx-4 py-3 lg:py-2 text-2xl font-navigation uppercase text-white transition-colors duration-300 ease-linear" role="menuitem" href="{{ entry.url }}">
                 {{ entry.title }}
               </a>
               {% if entry.getChildren|length %}

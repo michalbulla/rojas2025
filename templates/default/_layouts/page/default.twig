@@ -1,19 +1,31 @@
-<div id="page-wrap">
+<div id="page-wrap" class="bg-page-bg bg-repeat-x">
   {% block headerContent %}
     {% include '_partials/header' %}
   {% endblock %}
+
+  {% if entry.slug == 'kontakt' %}
+    {% include '/_partials/map.twig' %}
+  {% endif %}
 
   {% block subNavMobile %}
     {% include '_partials/nav/subMobile' %}
   {% endblock %}
 
-  <div class="px-4 xl:px-0 xl:container">
-    {% block contentLayout %}
-      {% embed '_layouts/content/default' %}
-      {% endembed %}
-    {% endblock %}
-  </div>
+  {% block contentLayout %}
+    {% embed '_layouts/content/default' %}
+    {% endembed %}
+  {% endblock %}
 </div>
 {% block footerContent %}
   {% include '_partials/footer' %}
 {% endblock %}
+
+{# Fancybox js and css code #}
+{% css "https://cdn.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.css" %}
+{% js "https://cdn.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.umd.js" %}
+
+{# Minified Swiper CSS v7.3.1 #}
+{% css "https://unpkg.com/swiper@7/swiper-bundle.min.css" %}
+
+{# Minified Swiper JavaScript v7.3.1 #}
+{% js "https://unpkg.com/swiper@7/swiper-bundle.min.js" %}

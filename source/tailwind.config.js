@@ -4,13 +4,15 @@ module.exports = {
   content: ['./templates/**/*.twig'],
   theme: {
     fontFamily: {
-      primary: ['ui-sans-serif', 'sans-serif'],
-      //   secondary: ['ui-sans-serif', 'sans-serif'],
+      primary: ['Open Sans', 'sans-serif'],
+      secondary: ['Lobster', 'sans-serif'],
+      navigation: ['Open Sans Condensed', 'sans-serif'],
     },
     screens: {
       sm: '450px',
       md: '768px',
       lg: '1024px',
+      'lg-xl': '1150px',
       xl: '1350px',
       // We want the maximum container to stop at 1350px
       // so we set the last breakpoint to the same value
@@ -25,13 +27,15 @@ module.exports = {
       colors: {
         brand: {
           // put the custom site color here
-          blue: colors.blue[500],
+          'one': '#024F66',
+          'two': '#ED6912',
+          'gray': '#777777',
         },
         content: {
-          'text': colors.gray[600],
-          'link': colors.blue[700],
-          'h2': colors.gray[600],
-          'h3': colors.gray[600],
+          'text': '#666666',
+          'link': '#4e93d8',
+          'h2': '#024F66',
+          'h3': '#666666',
           'h4': colors.gray[600],
           'divider': colors.gray[300],
           image: {
@@ -40,11 +44,11 @@ module.exports = {
           },
           table: {
             'heading': colors.gray[800],
-            'heading-bg': colors.gray[200],
-            'border': colors.gray[400],
-            'grid-row': colors.gray[300],
-            'grid-column': colors.gray[300],
-            'alt-row-bg': colors.gray[200],
+            'heading-bg': '#4D8394',
+            'border': '#4D8394',
+            'grid-row': '#4D8394',
+            'grid-column': '#4D8394',
+            'alt-row-bg': '#E7EFF1',
           },
           doc: {
             'size': colors.gray[700],
@@ -61,10 +65,14 @@ module.exports = {
         },
       },
       backgroundImage: {
-        // 'callout-red': "url('/img/callout-graphic_red.svg'), linear-gradient(to right, #E7751F, #D33D4C)",
+        'header': "url('/img/header-bg.png')",
+        'page-bg': "url('/img/body-bg.png')",
+        'pattern': "url('/img/pattern.png'), linear-gradient(to right, #00425C, #00425C)",
+        'page-pattern': "linear-gradient(to right, rgba(255,255,255,0.75), rgba(255,255,255,0.75)), url('/img/pattern.png')",
+        'images': "linear-gradient(to bottom, rgba(255,255,255,0.5), rgba(0,0,0,0)), url('/img/bg-image-r.jpg')",
       },
       boxShadow: {
-        // 'btn' : '2px 2px 0 rgba(0, 0, 0, .5)',
+        'btn' : '0px 0px 3px rgba(0, 0, 0, .5)',
       },
     },
   },

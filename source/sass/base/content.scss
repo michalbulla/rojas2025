@@ -21,7 +21,11 @@
 
 .default-content {
   p {
-    @apply mb-4;
+    @apply mb-4 text-xl text-center;
+
+    &.note {
+      @apply italic text-sm;
+    }
   }
 
   p,
@@ -32,7 +36,7 @@
   }
 
   h2 {
-    @apply font-bold text-content-h2 text-3xl leading-tight mt-8 mb-3;
+    @apply font-bold text-content-h2 font-secondary text-4xl leading-tight mt-8 mb-3 text-center;
 
     + h3,
     + h4 {
@@ -61,7 +65,7 @@
   }
 
   li {
-    @apply mb-2;
+    @apply mb-2 text-xl;
 
     ul, ol {
       @apply mb-0;

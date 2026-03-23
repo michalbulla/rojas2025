@@ -1,0 +1,135 @@
+{% set imageThumbnail = {
+    mode: 'crop',
+    width: 350,
+    height: 250,
+    quality: 100
+  }
+%}
+
+{% set imageThumbnailLarge = {
+    mode: 'crop',
+    width: 536,
+    height: 364,
+    quality: 100
+  }
+%}
+
+{% if block.galeria == 0 %}
+  <div class="images-wrap text-center even:bg-images bg-cover bg-center pb-12">
+    <div class="lg:container px-4">
+      <h2 class="pt-12">
+        {% if block.buttonLink|length %}
+          <a href="{{ block.buttonLink.one.url }}">{{ block.title }}</a>
+        {% else %}
+          {{ block.title }}
+        {% endif %}
+      </h2>
+      {% set images = block.images %}
+      <div class="images {{ images|length == 1 ? 'one' }} pt-8 pb-6 mb-8 sm:grid sm:grid-cols-2 md:grid-cols-3 gap-6">
+        {% for image in images.all %}
+          {% if image.width > image.getWidth('imageLarge') %}
+            {% do image.setTransform('imageLarge') %}
+          {% endif %}
+          {% set thumbnailTransform = images|length == 1 ? imageThumbnailLarge : imageThumbnail %}
+          <div class="image mb-8 sm:mb-0 col-span-1 border-[5px] border-white/60">
+            <a href="{{ image.getUrl() }}" title="{{ image.title }}" data-fancybox="gallery" {% if image.caption|length %} data-caption="{{ image.caption }}"{% endif %}>
+              <img src="{{ image.getUrl(thumbnailTransform) }}" alt="{{ image.title }}" />
+            </a>
+          </div>
+          {% if image.caption is not empty %}
+            <p>{{ image.caption }}</p>
+          {% endif %}
+        {% endfor %}
+      </div>
+      {% if block.button|length %}
+        <div class="btn-wrap center">
+          <a href="{{ block.button }}" class="btn">{{ block.button.label }} {{ svg("@webroot/img/icons/chevron-right-solid.svg")|attr({class: 'h-5 w-5 inline-block text-white ml-4'}) }}</a>
+        </div>
+      {% endif %}
+    </div>
+  </div>
+{% else %}
+  <div class="container narrow gallery-wrap" >
+    <div class="swiper-container gallery-top">
+      <div class="swiper-wrapper">
+        {% set images = block.images %}
+        {% for image in images.all %}
+          <div class="swiper-slide" style="background-image:url({{ image.getUrl('imageLarge') }})"></div>
+        {% endfor %}
+      </div>
+      <!-- Add Arrows -->
+      <div class="swiper-button-next swiper-button-white"></div>
+      <div class="swiper-button-prev swiper-button-white"></div>
+    </div>
+    <div class="swiper-container gallery-thumbs">
+      <div class="swiper-wrapper">
+        {% for image in images.all %}
+          <div class="swiper-slide" style="background-image:url({{ image.getUrl(imageThumbnail) }})"></div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+{% endif %}
+
+{% js %}
+  document.addEventListener('DOMContentLoaded', function () {
+  var galleryThumbs = new Swiper('.gallery-thumbs', {
+    spaceBetween: 10,
+    slidesPerView: 5,
+    touchRatio: 0.2,
+    loop: true,
+    loopedSlides: 50,
+    watchSlidesVisibility: true,
+    watchSlidesProgress: true,
+    slideToClickedSlide: true,
+  });
+
+  var galleryTop = new Swiper('.gallery-top', {
+    spaceBetween: 10,
+    loop: true,
+    loopedSlides: 50,
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+    thumbs: {
+      swiper: galleryThumbs,
+    },
+  });
+
+  // Optional (for older Swiper versions that use controller)
+  galleryTop.controller.control = galleryThumbs;
+  galleryThumbs.controller.control = galleryTop;
+});
+{% endjs %}
+
+{% css %}
+
+  .swiper-container {
+    width: 100%;
+    height: 300px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .swiper-slide {
+    background-size: cover;
+    background-position: center;
+  }
+  .gallery-top {
+    height: 80%;
+    width: 100%;
+  }
+  .gallery-thumbs {
+    height: 20%;
+    box-sizing: border-box;
+    padding: 10px 0;
+  }
+  .gallery-thumbs .swiper-slide {
+    height: 100%;
+    opacity: 0.6;
+  }
+  .gallery-thumbs .swiper-slide-active {
+    opacity: 1;
+  }
+
+{% endcss %}

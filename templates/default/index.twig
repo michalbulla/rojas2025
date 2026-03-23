@@ -7,9 +7,36 @@
   {% embed '_layouts/page/homePage' %}
     {% block contentLayout %}
       <div class="main-content" id="main-content-start">
-        <div class="container">
-          {# {% include '_partials/carousel' %} #}
-          <h1>{{ entry.title }}</h1>
+        <div class="carousel-wrap lg:-mt-[66px]">
+          {% include '_partials/carousel' %}
+        </div>
+        <div class="overview">
+          <div class="lg:container px-4 lead-text text-center text-xl py-8">
+            <h1 class="main-heading">{{ entry.title }}</h1>
+            <p>{{ entry.leadText }}</p>
+          </div>
+          <div class="lg:container px-4">
+            <div class="main-sections py-8 md:grid md:grid-cols-3 gap-4">
+              {% if entry.mainSections|length %}
+                {% for section in entry.mainSections.all() %}
+                  <a href="{{ section.sectionLink.one.url }}" class="block relative shadow-btn h-[300px] overflow-hidden group mb-4 md:mb-0">
+                    <img src="{{ section.obrazok.one.url('homePageSections') }}" alt="{{ section.caption }}" class="absolute w-full h-full object-cover"/>
+                    <div class="absolute left-0 w-full p-4 bg-white/80 bottom-0 lg:-bottom-[40px] group-hover:bottom-0 duration-300">
+                      <h2 class="text-brand-one font-secondary text-2xl md:text-2xl xl:text-3xl mb-4 md:mb-0 lg:mb-4">{{ section.caption }}</h2>
+                      <p class="small text-content-table-heading tracking-tight md:hidden lg:block">{{ section.description }}</p>
+                    </div>
+                  </a>
+                {% endfor %}
+              {% endif %}
+            </div>
+              {% set quote = craft.entries.section('citaty').orderBy('RAND()').one() %}
+              {% if quote|length %}
+                <div class="quote text-center py-8 md:py-12">
+                  <p class="italic text-3xl px-12 md:px-20 lg:px-32 text-brand-one font-secondary mb-4">&quot;{{ quote.citat }}&quot;</p>
+                  <p class="author font-bold text-xl">&mdash; Tím penziónu Rojas</p>
+                </div>
+              {% endif %}
+          </div>
         </div>
       </div>
     {% endblock %}

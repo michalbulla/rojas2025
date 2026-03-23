@@ -1,4 +1,4 @@
-<div id="page-wrap">
+<div id="page-wrap" class="bg-page-bg bg-repeat-x">
   {% block headerContent %}
     {% include '_partials/header' %}
   {% endblock %}
@@ -10,3 +10,9 @@
 {% block footerContent %}
   {% include '_partials/footer' %}
 {% endblock %}
+
+{# Minified Swiper CSS v7.3.1 #}
+{% css "https://unpkg.com/swiper@7/swiper-bundle.min.css" %}
+
+{# Minified Swiper JavaScript v7.3.1 #}
+{% js "https://unpkg.com/swiper@7/swiper-bundle.min.js" %}

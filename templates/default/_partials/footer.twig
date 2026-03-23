@@ -1,9 +1,47 @@
-<footer>
-  <div class="mt-8 bg-gray-300">
-    <div class="xl:container">
-      <div class="p-2 md:p-4">
-        <p class="text-sm text-center">&copy;{{ 'now'|date('Y') }} {{ siteName }}. All Rights Reserved.</p>
-        {% include '_partials/signature' %}
+<footer class="bg-pattern bg-repeat">
+  <div class="lg:container px-4">
+    <div class="footer-block md:flex md:justify-between py-8">
+      <div class="adresa mr-4">
+        <img class="mb-4 max-w-[210px]" src="/img/logo_02.png" alt="Rojas Logo">
+        <p class="text-white mb-4"><strong>Penzión Rojas, č.d.3</strong><br/>97644, Mýto pod Ďumbierom</p>
+        <p class="phone text-white font-secondary text-2xl mb-4">0907 601 943<br/>0914 142 700</p>
+        <p class="email text-white font-secondary text-2xl mb-4"><a href="mailto:info@rojas.sk">info@rojas.sk</a></p>
+        <p class="note text-white/80 mb-4 italic text-sm"><a href="https://pds-rojas-assets.s3.amazonaws.com/obrazky/zasady-ochrany-osobnych-udajov.pdf">Zásady ochrany osobných údajov</a></p>
+      </div>
+      <div class="ubytovanie-sluzby mr-4">
+        <h2 class="text-2xl text-white font-secondary mb-3">Ubytovanie</h2>
+        <ul class="mb-8">
+          <li class="text-white/80 mb-2"><a href="/ubytovanie/zelena-budova">Zelený apartmánový dom</a></li>
+          <li class="text-white/80 mb-2"><a href="/ubytovanie/žltá-budova">Žltý apartmánový dom</a></li>
+          <li class="text-white/80 mb-2"><a href="/ubytovanie/hnedá-budova">Hnedý apartmánový dom</a></li>
+        </ul>
+        <h2 class="text-2xl text-white font-secondary mb-3">Služby</h2>
+        <ul class="mb-8">
+          <li class="text-white/80 mb-2"><a href="/reštaurácia">Reštaurácia</a></li>
+          <li class="text-white/80 mb-2"><a href="/relax/bazén-a-oddychová-zóna">Bazén a oddychová zóna</a></li>
+          <li class="text-white/80 mb-2"><a href="/relax/sauna-s-hydromasážnou-vaňou">Sauna s hydromasážnou vaňou</a></li>
+        </ul>
+      </div>
+      <div class="okolie sm:grid sm:grid-cols-2 sm:gap-8">
+        <div class="col-span-1">
+          <h2 class="text-2xl text-white font-secondary mb-3">Info o okolí</h2>
+          <ul class="mb-8">
+            <li class="text-white/80 mb-2"><a href="/info-o-okolí/lyžovanie">Lyžovanie</a></li>
+            <li class="text-white/80 mb-2"><a href="/info-o-okolí/turistika">Turistika</a></li>
+            <li class="text-white/80 mb-2"><a href="/info-o-okolí/čiernohronská-železnička">Čiernohronská železnička</a></li>
+            <li class="text-white/80 mb-2"><a href="/info-o-okolí/jaskyne">Jaskyne</a></li>
+            <li class="text-white/80 mb-2"><a href="/info-o-okolí/jazda-na-koňoch">Jazda na koňoch</a></li>
+          </ul>
+        </div>
+        <div class="col-span-1">
+          <ul class="mb-8">
+            <li class="text-white/80 mb-2"><a href="/info-o-okolí/golf">Golf</a></li>
+            <li class="text-white/80 mb-2"><a href="/info-o-okolí/kúpaliská">Kúpaliská</a></li>
+            <li class="text-white/80 mb-2"><a href="/info-o-okolí/mapa">Mapa</a></li>
+            <li class="text-white/80 mb-2"><a href="/info-o-okolí/splav-hrona">Splav hrona</a></li>
+            <li class="text-white/80 mb-2"><a href="/info-o-okolí/lanový-park-tarzánia">Lanový park Tarzánia</a></li>
+          </ul>
+        </div>
       </div>
     </div>
   </div>
